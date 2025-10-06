@@ -15,6 +15,7 @@ import javafx.scene.layout.GridPane;
 // Project imports
 import dk.easv.tictactoe.bll.GameBoard;
 import dk.easv.tictactoe.bll.IGameBoard;
+import javafx.stage.Stage;
 
 /**
  *
@@ -54,12 +55,16 @@ public class TicTacViewController implements Initializable
                 if (game.isGameOver())
                 {
                     int winner = game.getWinner();
+
+                    Button btn = (Button) event.getSource();
+                    String xOrO = player == 1 ? "X" : "O";
+                    btn.setText(xOrO);
                     displayWinner(winner);
                 }
                 else
                 {
                     Button btn = (Button) event.getSource();
-                    String xOrO = player == 0 ? "X" : "O";
+                    String xOrO = player == 1 ? "X" : "O";
                     btn.setText(xOrO);
                     setPlayer();
                 }
@@ -101,37 +106,29 @@ public class TicTacViewController implements Initializable
         setPlayer();
     }
 
-    /**
-     * Set the next player
-     */
+    // set the label to show the current player
     private void setPlayer()
     {
         lblPlayer.setText(TXT_PLAYER + game.getNextPlayer());
     }
 
-
-    /**
-     * Finds a winner or a draw and displays a message based
-     * @param winner
-     */
+    // display the winner
     private void displayWinner(int winner)
     {
         String message = "";
         switch (winner)
         {
             case -1:
-                message = "It's a draw :-(";
+                message = "It's a draw!";
                 break;
             default:
-                message = "Player " + winner + " wins!!!";
+                message = "Player " + winner + " Wins!";
                 break;
         }
         lblPlayer.setText(message);
     }
 
-    /**
-     * Clears the game board in the GUI
-     */
+    // clear the board
     private void clearBoard()
     {
         for(Node n : gridPane.getChildren())
@@ -139,5 +136,12 @@ public class TicTacViewController implements Initializable
             Button btn = (Button) n;
             btn.setText("");
         }
+    }
+
+    // close the window
+    @FXML
+    private void onBtnExitClick(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
     }
 }

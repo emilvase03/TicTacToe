@@ -3,3 +3,8 @@
     -fx-background-repeat: stretch;   
     -fx-background-position: center;
 }
+#vbox {
+    -fx-background-image: url(../images/background.jpg);
+    -fx-background-repeat: stretch;
+    -fx-background-position: center;
+}

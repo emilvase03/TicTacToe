@@ -54,9 +54,10 @@ public class GameBoard implements IGameBoard
             gameOver = true;
             winner = -1;
         }
-
-        // switch to next player
-        currentPlayer = (currentPlayer == 0) ? 1 : 0;
+        else {
+            // only switch to next player if the game continues
+            currentPlayer = (currentPlayer == 2) ? 1 : 2;
+        }
 
         return true;
     }
@@ -73,7 +74,7 @@ public class GameBoard implements IGameBoard
     
     public void newGame()
     {
-        currentPlayer = 0;
+        currentPlayer = 1;
         gameOver = false;
         winner = -1;
 
@@ -84,16 +85,12 @@ public class GameBoard implements IGameBoard
         }
     }
 
-    /**
-     * helper method to check if the current player has won.
-     *
-     * @return true if current player has three in a row.
-     */
+    // check board for potential win condition
     private boolean checkWin()
     {
         int marker = currentPlayer + 1;
 
-        // Check rows
+        // check rows
         for (int row = 0; row < 3; row++)
         {
             if (board[0][row] == marker && board[1][row] == marker && board[2][row] == marker)
