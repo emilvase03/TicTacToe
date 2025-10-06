@@ -7,62 +7,142 @@ package dk.easv.tictactoe.bll;
  */
 public class GameBoard implements IGameBoard
 {
+    private int currentPlayer = 1;
+    private int[][] board = new int[3][3];
+    private boolean gameOver = false;
+    private int winner = -1;
 
-    /**
-     * Returns 0 for player 0, 1 for player 1.
-     *
-     * @return int Id of the next player.
-     */
-    public int getNextPlayer()
+    public GameBoard()
     {
-        //TODO Implement this method
-        return 0;
+        newGame();
     }
 
-    /**
-     * Attempts to let the current player play at the given coordinates. It the
-     * attempt is succesfull the current player has ended his turn and it is the
-     * next players turn.
-     *
-     * @param col column to place a marker in.
-     * @param row row to place a marker in.
-     * @return true if the move is accepted, otherwise false. If gameOver == true
-     * this method will always return false.
-     */
+    // returns the current player
+    public int getNextPlayer()
+    {
+        return currentPlayer;
+    }
+
+    // checks if attempted play is valid
     public boolean play(int col, int row)
     {
-        //TODO Implement this method
+        // check if game is over
+        if (gameOver) {
+            return false;
+        }
+
+        // check if coords are valid
+        if (col < 0 || col > 2 || row < 0 || row > 2) {
+            return false;
+        }
+
+        // check if cell is empty (0 means empty, 1 means player 1, 2 means player 2)
+        if (board[col][row] != 0) {
+            return false;
+        }
+
+        // place the marker (player 1 uses 1, player 2 uses 2)
+        board[col][row] = currentPlayer + 1;
+
+        // check if this move resulted in a win
+        if (checkWin()) {
+            gameOver = true;
+            winner = currentPlayer;
+        }
+        // check if board is full (draw)
+        else if (isBoardFull()) {
+            gameOver = true;
+            winner = -1;
+        }
+
+        // switch to next player
+        currentPlayer = (currentPlayer == 0) ? 1 : 0;
+
         return true;
     }
 
-    /**
-     * Tells us if the game has ended either by draw or by meeting the winning
-     * condition.
-     *
-     * @return true if the game is over, else it will retun false.
-     */
     public boolean isGameOver()
     {
-        //TODO Implement this method
+        return gameOver;
+    }
+
+    public int getWinner()
+    {
+        return winner;
+    }
+    
+    public void newGame()
+    {
+        currentPlayer = 0;
+        gameOver = false;
+        winner = -1;
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                board[i][j] = 0;
+            }
+        }
+    }
+
+    /**
+     * helper method to check if the current player has won.
+     *
+     * @return true if current player has three in a row.
+     */
+    private boolean checkWin()
+    {
+        int marker = currentPlayer + 1;
+
+        // Check rows
+        for (int row = 0; row < 3; row++)
+        {
+            if (board[0][row] == marker && board[1][row] == marker && board[2][row] == marker)
+            {
+                return true;
+            }
+        }
+
+        // check columns
+        for (int col = 0; col < 3; col++)
+        {
+            if (board[col][0] == marker && board[col][1] == marker && board[col][2] == marker)
+            {
+                return true;
+            }
+        }
+
+        // check diagonal (top-left to bottom-right)
+        if (board[0][0] == marker && board[1][1] == marker && board[2][2] == marker)
+        {
+            return true;
+        }
+
+        // check diagonal (top-right to bottom-left)
+        if (board[0][2] == marker && board[1][1] == marker && board[2][0] == marker)
+        {
+            return true;
+        }
+
         return false;
     }
 
     /**
-     * Gets the id of the winner, -1 if its a draw.
+     * Helper method to check if the board is full.
      *
-     * @return int id of winner, or -1 if draw.
+     * @return true if all cells are occupied.
      */
-    public int getWinner()
+    private boolean isBoardFull()
     {
-        //TODO Implement this method
-        return -1;
-    }
-
-    /**
-     * Resets the game to a new game state.
-     */
-    public void newGame()
-    {
-        //TODO Implement this method
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                if (board[i][j] == 0)
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }
