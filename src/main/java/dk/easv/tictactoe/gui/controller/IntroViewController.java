@@ -24,6 +24,7 @@ public class IntroViewController {
         gameStage.setTitle("Tic Tac Toe - 1v1");
         gameStage.setScene(scene);
         gameStage.initModality(Modality.NONE); // allow both windows to exist
+        gameStage.setResizable(false);
         gameStage.show();
 
         // hide intro window

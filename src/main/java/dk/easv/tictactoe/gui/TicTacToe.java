@@ -31,6 +31,7 @@ public class TicTacToe extends Application
         stage.setResizable(false);
         stage.setTitle("Tic Tac Toe");
         stage.centerOnScreen();
+        stage.setResizable(false);
 
         stage.show();
     }
