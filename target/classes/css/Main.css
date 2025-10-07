@@ -1,10 +1,211 @@
-#pane {
-    -fx-background-image: url(../images/background.jpg);
-    -fx-background-repeat: stretch;   
-    -fx-background-position: center;
+/* Layout Containers */
+#pane, #vbox, #hbox, #anchorpane, .border-pane, .anchor-pane, .vbox, .hbox {
+    -fx-background-color: #212529;
 }
-#vbox {
-    -fx-background-image: url(../images/background.jpg);
-    -fx-background-repeat: stretch;
-    -fx-background-position: center;
+
+.border-pane {
+    -fx-background-color: #212529;
+}
+
+/* Labels */
+.label {
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+}
+
+/* Buttons - Default State */
+.button {
+    -fx-background-color: #1e2125;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #26292e;
+    -fx-border-width: 1px;
+    -fx-background-radius: 3px;
+    -fx-padding: 8px 16px;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+}
+
+/* Buttons - Hover State */
+.button:hover {
+    -fx-background-color: #26292e;
+}
+
+/* Buttons - Pressed State */
+.button:pressed {
+    -fx-background-color: #1a1d21;
+}
+
+/* Buttons - Focused State */
+.button:focused {
+    -fx-border-color: #3d4147;
+}
+
+/* Game Grid Buttons (Tic Tac Toe specific) */
+.button#btn1, .button#btn2, .button#btn3,
+.button#btn4, .button#btn5, .button#btn6,
+.button#btn7, .button#btn8, .button#btn9 {
+    -fx-background-color: #1e2125;
+    -fx-border-color: #26292e;
+    -fx-border-width: 2px;
+    -fx-font-size: 36px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+}
+
+.button#btn1:hover, .button#btn2:hover, .button#btn3:hover,
+.button#btn4:hover, .button#btn5:hover, .button#btn6:hover,
+.button#btn7:hover, .button#btn8:hover, .button#btn9:hover {
+    -fx-background-color: #26292e;
+}
+
+/* GridPane */
+.grid-pane {
+    -fx-background-color: #212529;
+    -fx-hgap: 4;
+    -fx-vgap: 4;
+}
+
+/* Text Fields */
+.text-field {
+    -fx-background-color: #26292e, #1e2125;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 0;
+    -fx-padding: 8px 12px;
+    -fx-font-size: 14px;
+}
+
+.text-field:hover {
+    -fx-background-color: #103f54, #1e2125;
+}
+
+.text-field:focused {
+    -fx-background-color: #279ed3, #1e2125;
+}
+
+/* ComboBox */
+.combo-box {
+    -fx-background-color: #26292e, #1e2125;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-background-radius: 0;
+}
+
+.combo-box:hover {
+    -fx-background-color: #103f54, #1e2125;
+}
+
+.combo-box:focused {
+    -fx-background-color: #279ed3, #1e2125;
+}
+
+.combo-box .list-cell {
+    -fx-text-fill: #ffffff;
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: #1e2125;
+    -fx-border-color: #26292e;
+}
+
+.combo-box-popup .list-view .list-cell {
+    -fx-background-color: #1e2125;
+    -fx-text-fill: grey;
+    -fx-padding: 8px 12px;
+}
+
+.combo-box-popup .list-view .list-cell:hover {
+    -fx-background-color: #26292e;
+    -fx-text-fill: #ffffff;
+}
+
+.combo-box-popup .list-view .list-cell:selected {
+    -fx-background-color: #26292e;
+    -fx-text-fill: #ffffff;
+}
+
+/* ScrollBar */
+.scroll-bar {
+    -fx-background-color: #212529;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #26292e;
+    -fx-background-radius: 4px;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #2e3237;
+}
+
+.scroll-bar .track {
+    -fx-background-color: #1e2125;
+}
+
+/* Player Label - Title Style */
+.label#lblPlayer {
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+}
+
+/* Menu Bar (if you add one later) */
+.menu-bar {
+    -fx-background-color: #1e2125;
+    -fx-border-color: #26292e;
+    -fx-border-width: 0 0 1 0;
+}
+
+.menu-bar .label {
+    -fx-text-fill: #ffffff;
+}
+
+.menu-item {
+    -fx-background-color: #1e2125;
+    -fx-text-fill: #ffffff;
+}
+
+.menu-item:hover {
+    -fx-background-color: #26292e;
+}
+
+.context-menu {
+    -fx-background-color: #1e2125;
+    -fx-border-color: #26292e;
+}
+
+/* Separator */
+.separator {
+    -fx-background-color: #26292e;
+}
+
+/* Title Text */
+.label {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+}
+
+#title {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+}
+
+/* Winning Line Highlight (to be applied programmatically) */
+.winning-button {
+    -fx-background-color: #4CAF50 !important;
+    -fx-text-fill: #ffffff !important;
+    -fx-font-weight: bold;
+}
+
+/* Disabled State */
+.button:disabled {
+    -fx-opacity: 0.4;
+    -fx-cursor: default;
+}
+
+#creatorLabel {
+    -fx-text-fill: #6e6e6e;
+    -fx-font-weight: normal;
+    -fx-font-size: 12px;
+    -fx-padding: 0 0 10px 0;
 }

@@ -142,7 +142,7 @@ public class TicTacViewController implements Initializable
                 Button btn = getButtonAt(col, row);
                 if (btn != null)
                 {
-                    btn.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;");
+                    btn.getStyleClass().add("winning-button");
                 }
             }
         }
@@ -173,7 +173,7 @@ public class TicTacViewController implements Initializable
         {
             Button btn = (Button) n;
             btn.setText("");
-            btn.setStyle("");
+            btn.getStyleClass().remove("winning-button");
         }
     }
 

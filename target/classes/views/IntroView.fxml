@@ -7,13 +7,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="403.0" prefWidth="235.0" stylesheets="@../css/Main.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.tictactoe.gui.controller.IntroViewController">
+<VBox id="vbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="403.0" prefWidth="235.0" stylesheets="@../css/Main.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.tictactoe.gui.controller.IntroViewController">
    <children>
-      <HBox prefHeight="100.0" prefWidth="200.0">
+      <HBox id="hbox" prefHeight="100.0" prefWidth="200.0" stylesheets="@../css/Main.css">
          <children>
             <AnchorPane prefHeight="100.0" prefWidth="236.0">
                <children>
-                  <Label layoutX="64.0" layoutY="36.0" text="TicTacToe">
+                  <Label layoutX="64.0" layoutY="35.0" text="TicTacToe">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -22,10 +22,11 @@
             </AnchorPane>
          </children>
       </HBox>
-      <AnchorPane prefHeight="304.0" prefWidth="235.0">
+      <AnchorPane id="anchorpane" prefHeight="304.0" prefWidth="235.0" stylesheets="@../css/Main.css">
          <children>
-            <Button layoutX="80.0" layoutY="264.0" mnemonicParsing="false" onAction="#onBtnQuitGameClick" text="Quit Game" />
-            <Button layoutX="84.0" layoutY="229.0" mnemonicParsing="false" onAction="#onBtnPlay1v1Click" text="Play 1vs1" />
+            <Button id="button" layoutX="69.0" layoutY="202.0" mnemonicParsing="false" onAction="#onBtnQuitGameClick" stylesheets="@../css/Main.css" text="Quit Game" />
+            <Button id="button" layoutX="74.0" layoutY="158.0" mnemonicParsing="false" onAction="#onBtnPlay1v1Click" stylesheets="@../css/Main.css" text="Play 1vs1" />
+            <Label id="creatorLabel" layoutX="19.0" layoutY="277.0" stylesheets="@../css/Main.css" text="Created by Emil, Tobias, Naja &amp; Mads S" />
          </children>
       </AnchorPane>
    </children>
