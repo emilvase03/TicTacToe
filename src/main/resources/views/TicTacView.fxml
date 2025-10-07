@@ -58,6 +58,9 @@
             <Button layoutX="136.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleNewGame" text="New Game" />
             <Button layoutY="14.0" mnemonicParsing="false" onAction="#onBtnExitClick" text="Exit" />
          </children>
+         <BorderPane.margin>
+            <Insets left="10.0" right="10.0" />
+         </BorderPane.margin>
       </AnchorPane>
    </bottom>
 </BorderPane>

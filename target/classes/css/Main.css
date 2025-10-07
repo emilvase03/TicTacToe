@@ -58,14 +58,12 @@
     -fx-background-color: #26292e;
 }
 
-/* GridPane */
 .grid-pane {
     -fx-background-color: #212529;
     -fx-hgap: 4;
     -fx-vgap: 4;
 }
 
-/* Text Fields */
 .text-field {
     -fx-background-color: #26292e, #1e2125;
     -fx-background-insets: 0, 0 0 1 0;
@@ -83,47 +81,6 @@
     -fx-background-color: #279ed3, #1e2125;
 }
 
-/* ComboBox */
-.combo-box {
-    -fx-background-color: #26292e, #1e2125;
-    -fx-background-insets: 0, 0 0 1 0;
-    -fx-background-radius: 0;
-}
-
-.combo-box:hover {
-    -fx-background-color: #103f54, #1e2125;
-}
-
-.combo-box:focused {
-    -fx-background-color: #279ed3, #1e2125;
-}
-
-.combo-box .list-cell {
-    -fx-text-fill: #ffffff;
-}
-
-.combo-box-popup .list-view {
-    -fx-background-color: #1e2125;
-    -fx-border-color: #26292e;
-}
-
-.combo-box-popup .list-view .list-cell {
-    -fx-background-color: #1e2125;
-    -fx-text-fill: grey;
-    -fx-padding: 8px 12px;
-}
-
-.combo-box-popup .list-view .list-cell:hover {
-    -fx-background-color: #26292e;
-    -fx-text-fill: #ffffff;
-}
-
-.combo-box-popup .list-view .list-cell:selected {
-    -fx-background-color: #26292e;
-    -fx-text-fill: #ffffff;
-}
-
-/* ScrollBar */
 .scroll-bar {
     -fx-background-color: #212529;
 }
@@ -141,50 +98,12 @@
     -fx-background-color: #1e2125;
 }
 
-/* Player Label - Title Style */
 .label#lblPlayer {
     -fx-text-fill: #ffffff;
     -fx-font-weight: bold;
 }
 
-/* Menu Bar (if you add one later) */
-.menu-bar {
-    -fx-background-color: #1e2125;
-    -fx-border-color: #26292e;
-    -fx-border-width: 0 0 1 0;
-}
-
-.menu-bar .label {
-    -fx-text-fill: #ffffff;
-}
-
-.menu-item {
-    -fx-background-color: #1e2125;
-    -fx-text-fill: #ffffff;
-}
-
-.menu-item:hover {
-    -fx-background-color: #26292e;
-}
-
-.context-menu {
-    -fx-background-color: #1e2125;
-    -fx-border-color: #26292e;
-}
-
-/* Separator */
-.separator {
-    -fx-background-color: #26292e;
-}
-
-/* Title Text */
-.label {
-    -fx-font-size: 24px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #ffffff;
-}
-
-#title {
+.label#title {
     -fx-font-size: 32px;
     -fx-font-weight: bold;
     -fx-text-fill: #ffffff;

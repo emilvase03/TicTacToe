@@ -13,7 +13,7 @@
          <children>
             <AnchorPane prefHeight="100.0" prefWidth="236.0">
                <children>
-                  <Label layoutX="64.0" layoutY="35.0" text="TicTacToe">
+                  <Label id="title" layoutX="46.0" layoutY="30.0" stylesheets="@../css/Main.css" text="TicTacToe">
                      <font>
                         <Font size="24.0" />
                      </font>

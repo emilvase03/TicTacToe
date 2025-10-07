@@ -13,9 +13,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class IntroViewController {
-    @FXML
-    private Stage window1Stage;
-
     // open new window for 1v1 game
     @FXML
     private void onBtnPlay1v1Click(ActionEvent event) throws IOException {
