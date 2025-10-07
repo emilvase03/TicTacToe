@@ -27,9 +27,6 @@ public class TicTacViewController implements Initializable
     private Label lblPlayer;
 
     @FXML
-    private Button btnNewGame;
-
-    @FXML
     private GridPane gridPane;
     
     private static final String TXT_PLAYER = "Player: ";

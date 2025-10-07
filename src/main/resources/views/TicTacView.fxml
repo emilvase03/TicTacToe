@@ -55,7 +55,7 @@
    <bottom>
       <AnchorPane id="anchorpane" prefHeight="41.0" prefWidth="236.0" stylesheets="@../css/Main.css" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btnNewGame" layoutX="158.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleNewGame" text="New Game" />
+            <Button layoutX="136.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleNewGame" text="New Game" />
             <Button layoutY="14.0" mnemonicParsing="false" onAction="#onBtnExitClick" text="Exit" />
          </children>
       </AnchorPane>
