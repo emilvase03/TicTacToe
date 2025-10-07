@@ -9,6 +9,7 @@ public class GameBoard implements IGameBoard
 {
     private int currentPlayer = 1;
     private int[][] board = new int[3][3];
+    private int[][] winningLine = null;
     private boolean gameOver = false;
     private int winner = -1;
 
@@ -95,6 +96,7 @@ public class GameBoard implements IGameBoard
         {
             if (board[0][row] == marker && board[1][row] == marker && board[2][row] == marker)
             {
+                winningLine = new int[][]{{0, row}, {1, row}, {2, row}};
                 return true;
             }
         }
@@ -104,6 +106,7 @@ public class GameBoard implements IGameBoard
         {
             if (board[col][0] == marker && board[col][1] == marker && board[col][2] == marker)
             {
+                winningLine = new int[][]{{col, 0}, {col, 1}, {col, 2}};
                 return true;
             }
         }
@@ -111,15 +114,18 @@ public class GameBoard implements IGameBoard
         // check diagonal (top-left to bottom-right)
         if (board[0][0] == marker && board[1][1] == marker && board[2][2] == marker)
         {
+            winningLine = new int[][]{{0, 0}, {1, 1}, {2, 2}};
             return true;
         }
 
         // check diagonal (top-right to bottom-left)
         if (board[0][2] == marker && board[1][1] == marker && board[2][0] == marker)
         {
+            winningLine = new int[][]{{0, 2}, {1, 1}, {2, 0}};
             return true;
         }
 
+        winningLine = null; // Reset if no win
         return false;
     }
 
@@ -141,5 +147,10 @@ public class GameBoard implements IGameBoard
             }
         }
         return true;
+    }
+
+    public int[][] getWinningLine()
+    {
+        return winningLine;
     }
 }

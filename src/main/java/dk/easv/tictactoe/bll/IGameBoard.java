@@ -46,4 +46,6 @@ public interface IGameBoard
      * Resets the game to a new game state.
      */
     void newGame();
+
+    int[][] getWinningLine();
 }

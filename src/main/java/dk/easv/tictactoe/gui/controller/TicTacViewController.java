@@ -60,6 +60,7 @@ public class TicTacViewController implements Initializable
                     String xOrO = player == 1 ? "X" : "O";
                     btn.setText(xOrO);
                     displayWinner(winner);
+                    highlightWinningLine();
                 }
                 else
                 {
@@ -128,6 +129,43 @@ public class TicTacViewController implements Initializable
         lblPlayer.setText(message);
     }
 
+    // highlight the winning line
+    private void highlightWinningLine()
+    {
+        int[][] winningLine = game.getWinningLine();
+        if (winningLine != null)
+        {
+            for (int[] position : winningLine)
+            {
+                int col = position[0];
+                int row = position[1];
+                Button btn = getButtonAt(col, row);
+                if (btn != null)
+                {
+                    btn.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;");
+                }
+            }
+        }
+    }
+
+    // get button at specific grid position
+    private Button getButtonAt(int col, int row)
+    {
+        for (Node node : gridPane.getChildren())
+        {
+            Integer nodeCol = GridPane.getColumnIndex(node);
+            Integer nodeRow = GridPane.getRowIndex(node);
+            int c = (nodeCol == null) ? 0 : nodeCol;
+            int r = (nodeRow == null) ? 0 : nodeRow;
+
+            if (c == col && r == row && node instanceof Button)
+            {
+                return (Button) node;
+            }
+        }
+        return null;
+    }
+
     // clear the board
     private void clearBoard()
     {
@@ -135,6 +173,7 @@ public class TicTacViewController implements Initializable
         {
             Button btn = (Button) n;
             btn.setText("");
+            btn.setStyle("");
         }
     }
 
