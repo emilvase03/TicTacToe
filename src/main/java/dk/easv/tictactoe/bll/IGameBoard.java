@@ -1,4 +1,3 @@
-
 package dk.easv.tictactoe.bll;
 
 /**
@@ -9,7 +8,7 @@ public interface IGameBoard
 {
 
     /**
-     * Returns 0 for player 0, 1 for player 1.
+     * Returns 1 for player 1, 2 for player 2.
      *
      * @return int Id of the next player.
      */
@@ -17,7 +16,7 @@ public interface IGameBoard
 
     /**
      * Attempts to let the current player play at the given coordinates. If the
-     * attempt is succesfull the current player has ended his turn and it is the
+     * attempt is successful the current player has ended his turn and it is the
      * next players turn.
      *
      * @param col column to place a marker in.
@@ -31,7 +30,7 @@ public interface IGameBoard
      * Tells us if the game has ended either by draw or by meeting the winning
      * condition.
      *
-     * @return true if the game is over, else it will retun false.
+     * @return true if the game is over, else it will return false.
      */
     boolean isGameOver();
 
@@ -47,5 +46,10 @@ public interface IGameBoard
      */
     void newGame();
 
+    /**
+     * Gets the winning line coordinates if there is a winner.
+     *
+     * @return array of winning coordinates, or null if no winner.
+     */
     int[][] getWinningLine();
 }
