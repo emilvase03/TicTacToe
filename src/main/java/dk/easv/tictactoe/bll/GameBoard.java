@@ -17,45 +17,28 @@ public class GameBoard implements IGameBoard
         newGame();
     }
 
-    // returns the current player
     public int getNextPlayer()
     {
         return currentPlayer;
     }
 
-    // checks if attempted play is valid
+    // cleaned up this function (cleaner validation)
     public boolean play(int col, int row)
     {
-        // check if game is over
-        if (gameOver) {
+        if (gameOver || col < 0 || col > 2 || row < 0 || row > 2 || board[col][row] != 0) {
             return false;
         }
 
-        // check if coords are valid
-        if (col < 0 || col > 2 || row < 0 || row > 2) {
-            return false;
-        }
-
-        // check if cell is empty (0 means empty, 1 means player 1, 2 means player 2)
-        if (board[col][row] != 0) {
-            return false;
-        }
-
-        // place the marker (player 1 uses 1, player 2 uses 2)
         board[col][row] = currentPlayer;
 
-        // check if this move resulted in a win
         if (checkWin()) {
             gameOver = true;
             winner = currentPlayer;
-        }
-        // check if board is full (draw)
-        else if (isBoardFull()) {
+        } else if (isBoardFull()) {
             gameOver = true;
             winner = -1;
-        }
-        else {
-            // only switch to next player if the game continues
+            winningLine = null;
+        } else {
             currentPlayer = (currentPlayer == 2) ? 1 : 2;
         }
 
@@ -72,28 +55,23 @@ public class GameBoard implements IGameBoard
         return winner;
     }
 
+    // board = new int[3][3] is better than nested loops
     public void newGame()
     {
         currentPlayer = 1;
         gameOver = false;
         winner = -1;
-
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                board[i][j] = 0;
-            }
-        }
+        board = new int[3][3];
     }
 
-    // check board for potential win condition
     private boolean checkWin()
     {
-        int marker = currentPlayer;
+        int m = currentPlayer;
 
         // check rows
         for (int row = 0; row < 3; row++)
         {
-            if (board[0][row] == marker && board[1][row] == marker && board[2][row] == marker)
+            if (board[0][row] == m && board[1][row] == m && board[2][row] == m)
             {
                 winningLine = new int[][]{{0, row}, {1, row}, {2, row}};
                 return true;
@@ -103,36 +81,29 @@ public class GameBoard implements IGameBoard
         // check columns
         for (int col = 0; col < 3; col++)
         {
-            if (board[col][0] == marker && board[col][1] == marker && board[col][2] == marker)
+            if (board[col][0] == m && board[col][1] == m && board[col][2] == m)
             {
                 winningLine = new int[][]{{col, 0}, {col, 1}, {col, 2}};
                 return true;
             }
         }
 
-        // check diagonal (top-left to bottom-right)
-        if (board[0][0] == marker && board[1][1] == marker && board[2][2] == marker)
+        // check diagonals
+        if (board[0][0] == m && board[1][1] == m && board[2][2] == m)
         {
             winningLine = new int[][]{{0, 0}, {1, 1}, {2, 2}};
             return true;
         }
 
-        // check diagonal (top-right to bottom-left)
-        if (board[0][2] == marker && board[1][1] == marker && board[2][0] == marker)
+        if (board[0][2] == m && board[1][1] == m && board[2][0] == m)
         {
             winningLine = new int[][]{{0, 2}, {1, 1}, {2, 0}};
             return true;
         }
 
-        winningLine = null; // Reset if no win
         return false;
     }
 
-    /**
-     * Helper method to check if the board is full.
-     *
-     * @return true if all cells are occupied.
-     */
     private boolean isBoardFull()
     {
         for (int i = 0; i < 3; i++)
