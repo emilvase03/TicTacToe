@@ -1,4 +1,3 @@
-
 package dk.easv.tictactoe.bll;
 
 /**
@@ -43,7 +42,7 @@ public class GameBoard implements IGameBoard
         }
 
         // place the marker (player 1 uses 1, player 2 uses 2)
-        board[col][row] = currentPlayer + 1;
+        board[col][row] = currentPlayer;
 
         // check if this move resulted in a win
         if (checkWin()) {
@@ -72,7 +71,7 @@ public class GameBoard implements IGameBoard
     {
         return winner;
     }
-    
+
     public void newGame()
     {
         currentPlayer = 1;
@@ -89,7 +88,7 @@ public class GameBoard implements IGameBoard
     // check board for potential win condition
     private boolean checkWin()
     {
-        int marker = currentPlayer + 1;
+        int marker = currentPlayer;
 
         // check rows
         for (int row = 0; row < 3; row++)
