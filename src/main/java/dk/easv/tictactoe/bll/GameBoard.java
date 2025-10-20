@@ -1,5 +1,4 @@
 package dk.easv.tictactoe.bll;
-
 /**
  *
  * @author EASV
@@ -28,9 +27,7 @@ public class GameBoard implements IGameBoard
         if (gameOver || col < 0 || col > 2 || row < 0 || row > 2 || board[col][row] != 0) {
             return false;
         }
-
         board[col][row] = currentPlayer;
-
         if (checkWin()) {
             gameOver = true;
             winner = currentPlayer;
@@ -41,7 +38,6 @@ public class GameBoard implements IGameBoard
         } else {
             currentPlayer = (currentPlayer == 2) ? 1 : 2;
         }
-
         return true;
     }
 
@@ -62,12 +58,12 @@ public class GameBoard implements IGameBoard
         gameOver = false;
         winner = -1;
         board = new int[3][3];
+        winningLine = null;
     }
 
     private boolean checkWin()
     {
         int m = currentPlayer;
-
         // check rows
         for (int row = 0; row < 3; row++)
         {
@@ -77,7 +73,6 @@ public class GameBoard implements IGameBoard
                 return true;
             }
         }
-
         // check columns
         for (int col = 0; col < 3; col++)
         {
@@ -87,20 +82,17 @@ public class GameBoard implements IGameBoard
                 return true;
             }
         }
-
         // check diagonals
         if (board[0][0] == m && board[1][1] == m && board[2][2] == m)
         {
             winningLine = new int[][]{{0, 0}, {1, 1}, {2, 2}};
             return true;
         }
-
         if (board[0][2] == m && board[1][1] == m && board[2][0] == m)
         {
             winningLine = new int[][]{{0, 2}, {1, 1}, {2, 0}};
             return true;
         }
-
         return false;
     }
 
@@ -122,5 +114,19 @@ public class GameBoard implements IGameBoard
     public int[][] getWinningLine()
     {
         return winningLine;
+    }
+
+    /**
+     * Returns a copy of the current board state for AI processing
+     * @return A deep copy of the board array
+     */
+    public int[][] getBoardCopy()
+    {
+        int[][] copy = new int[3][3];
+        for (int i = 0; i < 3; i++)
+        {
+            System.arraycopy(board[i], 0, copy[i], 0, 3);
+        }
+        return copy;
     }
 }
